@@ -3,47 +3,74 @@
 body {
     margin-top: 10px;
     background-color: #D4DADC;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#informacoes {
+aside#informacoes {
     height: 98vh;
     width: 20vw;    
 }
 
-#barra {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+p#titulo {
     font-size: 1.5em;
+    background-color: red;
     color: white;
     position: relative;
-    bottom: 72px;
+    bottom: 82px;
     text-align: center;
     z-index: -1; 
-    background-color: red;
-    width: 19vw;
+    width: 38vw;
 }
 
-#logo-nfl {
-    width: 60px;
-    height: 60px;
+img#logo-nfl {
+    width: 80px;
+    height: 80px;
 }
 
-table {
-    border-collapse: collapse;
-}
-td {
-    background-color: thistle;
-}
-
-
-#times {
+img#logo-afc {
     width: 40px;
     height: 40px;
 }
 
-
-#mapa {
+div#tabela-afc {
     position: absolute;
-    left: 20%;
+    top: 110px;
+}
+
+div#tabela-nfc {
+    position: absolute;
+    left: 375px;
+    top: 110px;
+}
+
+table {    
+    border-collapse: collapse;
+    width: 360px;
+}
+
+thead {
+    background-color: white;
+    font-size: 0.9em;
+}
+
+td {
+    background-color: thistle;
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+img#logo-times {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+
+main#mapa {
+    position: absolute;
+    left: 39%;
     height: 98vh;
-    width: 79vw;
+    width: 60vw;
 }

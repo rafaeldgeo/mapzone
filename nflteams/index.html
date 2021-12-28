@@ -16,22 +16,100 @@
     <main id="mapa"></main>
     <aside id="informacoes">
         <img src="logos/nfl.png" alt="Logo NFL" id="logo-nfl">
-        <p id="barra">TIMES DA NFL</p>
-        <table>
-            <tr>
-                <thead>
-                    <th>time</th>
+        <p id="titulo">TIMES DA NFL</p>
+        <div id="tabela-afc">
+            <table>
+                <thead id="cabecalho-afc">
+                    <th><img src="logos/afc.png" alt="Logo AFC" id="logo-afc"></th>
+                    <th>Conferência Americana</th>
+                    <th>Divisão</th>
                 </thead>
-                <td><img src="logos/packers.png" alt="" id="times"></td>
-                <td>Green Bay Packers</td>
-            </tr>
-        </table>
+                <tbody>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                        <td rowspan="4">Norte</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                        <td rowspan="4">Norte</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                        <td rowspan="4">Norte</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                        <td rowspan="4">Norte</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                    <tr>
+                        <td><img src="logos/packers.png" alt="" id="logo-times"></td>
+                        <td>Green Bay Packers</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="tabela-nfc">
+            
+
+
+            
+            </table>
+        </div>
     </aside>
     
+    <!--- Leaflet -->
 
     <script>
         const lat =  37.942555, lng = -95.711909;
-        const zoom = 5;
+        const zoom = 4.5;
         
         var map = L.map("mapa", {
             zoomControl: false,
