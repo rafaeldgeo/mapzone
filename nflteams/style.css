@@ -46,19 +46,34 @@ div#tabela-nfc {
 table {    
     border-collapse: collapse;
     width: 360px;
+    text-align: center;
 }
 
 thead {
     background-color: white;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
-td {
-    background-color: thistle;
-    text-align: center;
-    font-size: 0.8em;
+tr {
+    font-size: 0.9em;
     font-weight: bold;
 }
+
+tr.divisao-escura-afc {
+   background-color: rgb(245, 139, 139);
+}
+
+tr.divisao-clara-afc {
+    background-color: rgb(253, 219, 219);
+}
+
+tr.divisao-escura-nfc {
+    background-color: rgba(2, 3, 100, 0.233);
+ }
+ 
+ tr.divisao-clara-nfc {
+     background-color: rgba(29, 3, 145, 0.089);
+ }
 
 img#logo-times {
     width: 40px;
@@ -66,7 +81,6 @@ img#logo-times {
     padding: 0;
     margin: 0;
 }
-
 
 main#mapa {
     position: absolute;
