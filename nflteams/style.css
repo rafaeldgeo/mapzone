@@ -7,55 +7,58 @@ body {
 }
 
 aside#informacoes {
-    height: 98vh;
-    width: 20vw;    
+    float: top;
+    width: 40%;
 }
 
 p#titulo {
-    font-size: 1.5em;
     background-color: red;
+    width: 98%;
+    text-align:center;
     color: white;
-    position: relative;
-    bottom: 82px;
-    text-align: center;
-    z-index: -1; 
-    width: 38vw;
+    font-size: 1em;
 }
 
 img#logo-nfl {
-    width: 80px;
-    height: 80px;
+    position: absolute;
+    top: 0%;
+    width: 50px;
 }
 
-img#logo-afc {
+img#logo-afc-nfc {
     width: 40px;
     height: 40px;
+    
 }
 
-div#tabela-afc {
-    position: absolute;
-    top: 110px;
+div#div-tabela {
+    float: left;
+    bottom: 10%;
+    padding: 8px;
+    width: 100%;
 }
 
-div#tabela-nfc {
-    position: absolute;
-    left: 375px;
-    top: 110px;
-}
-
-table {    
+table#table-afc {    
+    float: left;
     border-collapse: collapse;
-    width: 360px;
     text-align: center;
+    width: 49%;
+}
+
+table#table-nfc {  
+    float: top;
+    border-collapse: collapse;
+    text-align: center;
+    width: 49%;
 }
 
 thead {
     background-color: white;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 tr {
-    font-size: 0.9em;
+    font-size: 80%;
     font-weight: bold;
 }
 
@@ -82,9 +85,9 @@ img#logo-times {
     margin: 0;
 }
 
-main#mapa {
-    position: absolute;
-    left: 39%;
+div#mapa {
+    float: right;
     height: 98vh;
-    width: 60vw;
+    width: 60%;
+    
 }
