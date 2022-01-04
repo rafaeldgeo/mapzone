@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10, user-scalable=no">
+    <title>Terminais do Sistema Transcol</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+</head>
+<body>
+    <div id="mapa"></div>
+
+    <script>
+        const lat = -20.281926, lng = -40.305852
+        const zoom = 12
+
+        var map = L.map("mapa").setView([lat, lng],zoom)
+        
+        // bases cartográficas
+        var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	    subdomains: 'abcd',
+	    maxZoom: 20
+        }).addTo(map)
+
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        })
+
+        var baseLayers = {
+            "Vetorial": CartoDB_Voyager,
+            "Satélite": Esri_WorldImagery
+        }
+
+        let controle = L.control.layers(baseLayers).addTo(map)
+
+        // icones terminais
+        let itjc = L.divIcon({html:'<p id="paragrafo">TJC</p>',className:'icone'})
+        let itla = L.divIcon({html:'<p id="paragrafo">TLA</p>',className:'icone'})
+        let itca = L.divIcon({html:'<p id="paragrafo">TCA</p>',className:'icone'})
+        let itst = L.divIcon({html:'<p id="paragrafo">TST</p>',className:'icone'})
+        let itja = L.divIcon({html:'<p id="paragrafo">TJA</p>',className:'icone'})
+        let itic = L.divIcon({html:'<p id="paragrafo">TIC</p>',className:'icone'})
+        let itcg = L.divIcon({html:'<p id="paragrafo">TCG</p>',className:'icone'})
+        let itib = L.divIcon({html:'<p id="paragrafo">TIB</p>',className:'icone'})
+        let itvl = L.divIcon({html:'<p id="paragrafo">TVL</p>',className:'icone'})
+        let itip = L.divIcon({html:'<p id="paragrafo">TIP</p>',className:'icone'})
+
+        // localização terminais
+        let tjc = L.marker([-20.159310,-40.195692], {icon:itjc}).bindTooltip('Terminal Jacaraípe',getToolip()).addTo(map)
+        let tla = L.marker([-20.193743,-40.255401], {icon:itla}).bindTooltip('Terminal Laranjeiras',getToolip()).addTo(map)
+        let tca = L.marker([-20.230704,-40.270053], {icon:itca}).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
+        let tst = L.marker([-20.330096,-40.353059], {icon:itst}).bindTooltip('Terminal São Torquato',getToolip()).addTo(map)
+        let tja = L.marker([-20.333835,-40.359087], {icon:itja}).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
+        let tic = L.marker([-20.325456,-40.372151], {icon:itic}).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
+        let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
+        let tib = L.marker([-20.346368,-40.315505], {icon:itib}).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
+        let tvl = L.marker([-20.342958,-40.294787], {icon:itvl}).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
+        let tip = L.marker([-20.391223,-40.321021], {icon:itip}).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
+        
+        // configurar Toolip
+        function getToolip() {
+            return {
+                permanent: false,
+                offset: [20,3],
+                direction: "right",
+                sticky: true, 
+            }
+        }
+        
+    </script>
+    
+</body>
+</html>
