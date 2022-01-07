@@ -81,11 +81,15 @@
         // inserir logo da Ceturb
         var titulo = L.control({position:"bottomright"})
         titulo.onAdd = function(map) {
-            var div = L.DomUtil.create('div','titulo')
-            div.innerHTML = '<img src="logoceturb.svg" alt="Logo Ceturb/ES width="20" height="20">'
-            return div
+            var img = L.DomUtil.create('img','logo')
+            img.src = 'logoceturb.svg'
+            img.style.opacity = 0.6
+            img.style.width = "40%"
+            return img;
         }
         titulo.addTo(map)
+
+
         
     </script>
     
