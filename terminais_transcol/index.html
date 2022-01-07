@@ -13,18 +13,22 @@
 </head>
 <body>
     <div id="mapa"></div>
+      
+    <!--- Leaflet -->
 
     <script>
-        const lat = -20.281926, lng = -40.305852
-        const zoom = 12
+        const lat = -20.271926, lng = -40.285852
+        const zoom = 11.5
 
-        var map = L.map("mapa").setView([lat, lng],zoom)
+        var map = L.map("mapa", {
+            zoomSnap: 0.25 // definição de zoom
+        }).setView([lat, lng],zoom)
         
         // bases cartográficas
         var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
 	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	    subdomains: 'abcd',
-	    maxZoom: zoom
+	    minZoom: zoom
         }).addTo(map)
 
         var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -73,8 +77,18 @@
                 sticky: true, 
             }
         }
+
+        // inserir logo da Ceturb
+        var titulo = L.control({position:"bottomright"})
+        titulo.onAdd = function(map) {
+            var div = L.DomUtil.create('div','titulo')
+            div.innerHTML = '<img src="logoceturb.svg" alt="Logo Ceturb/ES width="20" height="20">'
+            return div
+        }
+        titulo.addTo(map)
         
     </script>
+    
     
 </body>
 </html>
