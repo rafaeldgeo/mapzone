@@ -6,11 +6,6 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-aside#informacoes {
-    float: top;
-    width: 40%;
-}
-
 p#titulo {
     background-color: red;
     width: 98%;
@@ -32,24 +27,16 @@ img#logo-afc-nfc {
 }
 
 div#div-tabela {
-    float: left;
-    bottom: 10%;
-    padding: 8px;
-    width: 100%;
+    display:flex;
+    flex-direction:column;
+    overflow: auto;
+    width: 600px;
 }
 
 table#table-afc {    
-    float: left;
     border-collapse: collapse;
     text-align: center;
-    width: 49%;
-}
-
-table#table-nfc {  
-    float: top;
-    border-collapse: collapse;
-    text-align: center;
-    width: 49%;
+    width: 40%;
 }
 
 thead {
@@ -58,25 +45,17 @@ thead {
 }
 
 tr {
-    font-size: 80%;
+    font-size: 0.8em;
     font-weight: bold;
 }
 
-tr.divisao-escura-afc {
+tr.divisao-escura {
    background-color: rgb(245, 139, 139);
 }
 
-tr.divisao-clara-afc {
+tr.divisao-clara {
     background-color: rgb(253, 219, 219);
 }
-
-tr.divisao-escura-nfc {
-    background-color: rgba(2, 3, 100, 0.233);
- }
- 
- tr.divisao-clara-nfc {
-     background-color: rgba(29, 3, 145, 0.164);
- }
 
 img#logo-times {
     width: 40px;
@@ -86,8 +65,9 @@ img#logo-times {
 }
 
 div#mapa {
-    float: right;
-    height: 98vh;
-    width: 60%;
-    
+    position: absolute;
+    top: 60px;
+    left: 30%;
+    height: 83vh;
+    width: 80%;
 }
