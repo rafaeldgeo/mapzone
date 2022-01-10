@@ -57,16 +57,23 @@
         let itip = L.divIcon({html:'<p id="paragrafo">TIP</p>',className:'icone'})
 
         // localização terminais
-        let tjc = L.marker([-20.159310,-40.195692], {icon:itjc}).bindTooltip('Terminal Jacaraípe',getToolip()).addTo(map)
-        let tla = L.marker([-20.193743,-40.255401], {icon:itla}).bindTooltip('Terminal Laranjeiras',getToolip()).addTo(map)
-        let tca = L.marker([-20.230704,-40.270053], {icon:itca}).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
-        let tst = L.marker([-20.330096,-40.353059], {icon:itst}).bindTooltip('Terminal São Torquato',getToolip()).addTo(map)
-        let tja = L.marker([-20.333835,-40.359087], {icon:itja}).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
-        let tic = L.marker([-20.325456,-40.372151], {icon:itic}).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
-        let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
-        let tib = L.marker([-20.346368,-40.315505], {icon:itib}).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
-        let tvl = L.marker([-20.342958,-40.294787], {icon:itvl}).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
-        let tip = L.marker([-20.391223,-40.321080], {icon:itip}).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
+        let tjc = L.marker([-20.159310,-40.195692], {icon:itjc}).on('click', zoomMarker).bindTooltip('Terminal Jacaraípe',getToolip()).addTo(map)
+        let tla = L.marker([-20.193743,-40.255401], {icon:itla}).on('click', zoomMarker).bindTooltip('Terminal Laranjeiras',getToolip()).addTo(map)
+        let tca = L.marker([-20.230704,-40.270053], {icon:itca}).on('click', zoomMarker).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
+        let tst = L.marker([-20.330096,-40.353059], {icon:itst}).on('click', zoomMarker).bindTooltip('Terminal São Torquato',getToolip()).addTo(map)
+        let tja = L.marker([-20.333835,-40.359087], {icon:itja}).on('click', zoomMarker).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
+        let tic = L.marker([-20.325456,-40.372151], {icon:itic}).on('click', zoomMarker).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
+        let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).on('click', zoomMarker).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
+        let tib = L.marker([-20.346368,-40.315505], {icon:itib}).on('click', zoomMarker).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
+        let tvl = L.marker([-20.342958,-40.294787], {icon:itvl}).on('click', zoomMarker).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
+        let tip = L.marker([-20.391223,-40.321080], {icon:itip}).on('click', zoomMarker).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
+
+        // inserir zoom quando clicar no marcador
+        function zoomMarker(e){
+            var latLng = [e.target.getLatLng()]
+            var markerBounds = L.latLngBounds(latLng)
+            map.fitBounds(markerBounds)
+        }
         
         // configurar Toolip
         function getToolip() {
@@ -88,13 +95,12 @@
         }
         titulo.addTo(map)
 
-        var urltip = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
-        var imgb = [[-20.389676,-40.319953],[-20.392701,-40.321984]]
-        L.imageOverlay(urltip,imgb, {opacity:1}).addTo(map)
- 
+        // inserir imagem overlay
+        var urlimg = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
+        var imgbounds = [[-20.390057,-40.320336],[-20.392285,-40.321696]]
+        L.imageOverlay(urlimg,imgbounds, {opacity:0.6}).addTo(map)
         
     </script>
-    
     
 </body>
 </html>
