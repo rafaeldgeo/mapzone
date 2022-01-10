@@ -66,7 +66,7 @@
         let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
         let tib = L.marker([-20.346368,-40.315505], {icon:itib}).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
         let tvl = L.marker([-20.342958,-40.294787], {icon:itvl}).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
-        let tip = L.marker([-20.391223,-40.321200], {icon:itip}).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
+        let tip = L.marker([-20.391223,-40.321080], {icon:itip}).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
         
         // configurar Toolip
         function getToolip() {
@@ -89,8 +89,8 @@
         titulo.addTo(map)
 
         var urltip = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
-        var imgb = [[-20.390481,-40.320538],[-20.391907,-40.321576]]
-        L.imageOverlay(urltip,imgb).addTo(map)
+        var imgb = [[-20.389676,-40.319953],[-20.392701,-40.321984]]
+        L.imageOverlay(urltip,imgb, {opacity:0.5}).addTo(map)
  
         
     </script>
