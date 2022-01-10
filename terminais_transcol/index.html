@@ -28,7 +28,7 @@
         var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
 	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	    subdomains: 'abcd',
-	    minZoom: zoom
+	    minZoom: zoom,
         }).addTo(map)
 
         var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -88,10 +88,11 @@
         }
         titulo.addTo(map)
 
-        var imgtip = 'tip.png'
-        var imgb = [[-20.389924,-40.320185],[-20.392293,-40.321739]]
-        L.imageOverlay(imgtip,imagb).addTo(map)
+        var urltip = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
+        var imgb = [[-20.389913,-40.320202],[-20.392559,-40.321969]]
+        L.imageOverlay(urltip,imgb).addTo(map)
 
+     
 
         
     </script>
