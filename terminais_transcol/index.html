@@ -17,7 +17,7 @@
     <!--- Leaflet -->
 
     <script>
-        const lat = -20.271926, lng = -40.285852
+        const lat = -20.271926, lng = -40.325852
         const zoom = 11.5
 
         var map = L.map("mapa", {
@@ -73,7 +73,6 @@
             return {
                 permanent: false,
                 offset: [20,3],
-                direction: "right",
                 sticky: true, 
             }
         }
@@ -84,10 +83,14 @@
             var img = L.DomUtil.create('img','logo')
             img.src = 'logoceturb.svg'
             img.style.opacity = 0.6
-            img.style.width = "40%"
+            img.style.width = "110px"
             return img;
         }
         titulo.addTo(map)
+
+        var imgtip = 'tip.png'
+        var imgb = [[-20.389924,-40.320185],[-20.392293,-40.321739]]
+        L.imageOverlay(imgtip,imagb).addTo(map)
 
 
         
