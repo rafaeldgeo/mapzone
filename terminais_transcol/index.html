@@ -62,7 +62,7 @@
         let tca = L.marker([-20.230704,-40.270053], {icon:itca}).on('click', zoomMarker).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
         let tst = L.marker([-20.330000,-40.3531859], {icon:itst}).on('click', zoomMarker).bindTooltip('Terminal São Torquato',getToolip()).addTo(map)
         let tja = L.marker([-20.333730,-40.359087], {icon:itja}).on('click', zoomMarker).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
-        let tic = L.marker([-20.325456,-40.372151], {icon:itic}).on('click', zoomMarker).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
+        let tic = L.marker([-20.325550,-40.372151], {icon:itic}).on('click', zoomMarker).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
         let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).on('click', zoomMarker).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
         let tib = L.marker([-20.346300,-40.315460], {icon:itib}).on('click', zoomMarker).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
         let tvl = L.marker([-20.342650,-40.294687], {icon:itvl}).on('click', zoomMarker).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
@@ -116,9 +116,13 @@
         var tjabounds = [[-20.333121,-40.358479],[-20.334326,-40.359688]]
         L.imageOverlay(urltja,tjabounds, {opacity:0.6}).addTo(map)
         
-        var urltic = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tja.png?raw=true'
+        var urltic = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tic.png?raw=true'
         var ticbounds = [[-20.324839,-40.372034],[-20.326883,-40.373184]]
         L.imageOverlay(urltic,ticbounds, {opacity:0.6}).addTo(map)
+
+        var urltcg = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tic.png?raw=true'
+        var tcgbounds = [[-20.345350,-40.395424],[-20.346779,-40.397783]]
+        L.imageOverlay(urltcg,tcgbounds, {opacity:0.6}).addTo(map)
         
     </script>
     
