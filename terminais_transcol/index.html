@@ -64,7 +64,7 @@
         let tja = L.marker([-20.333835,-40.359087], {icon:itja}).on('click', zoomMarker).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
         let tic = L.marker([-20.325456,-40.372151], {icon:itic}).on('click', zoomMarker).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
         let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).on('click', zoomMarker).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
-        let tib = L.marker([-20.346368,-40.315505], {icon:itib}).on('click', zoomMarker).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
+        let tib = L.marker([-20.346300,-40.315460], {icon:itib}).on('click', zoomMarker).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
         let tvl = L.marker([-20.342958,-40.294787], {icon:itvl}).on('click', zoomMarker).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
         let tip = L.marker([-20.391223,-40.321080], {icon:itip}).on('click', zoomMarker).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
 
@@ -96,13 +96,17 @@
         titulo.addTo(map)
 
         // inserir imagem overlay
-        var urltip = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
+        var urltip = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tip.png?raw=true'
         var tipbounds = [[-20.390057,-40.320336],[-20.392285,-40.321696]]
         L.imageOverlay(urltip,tipbounds, {opacity:0.6}).addTo(map)
 
         var urltib = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tib.png?raw=true'
         var tibbounds = [[-20.345964,-40.314944],[-20.346794,-40.315917]]
         L.imageOverlay(urltib,tibbounds, {opacity:0.6}).addTo(map)
+
+        var urltvl = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tib.png?raw=true'
+        var tvlbounds = [[-20.342251,-40.294201],[-20.343433,-40.295273]]
+        L.imageOverlay(urltvl,tvlbounds, {opacity:0.6}).addTo(map)
         
     </script>
     
