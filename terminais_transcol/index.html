@@ -88,7 +88,7 @@
         var titulo = L.control({position:"bottomright"})
         titulo.onAdd = function(map) {
             var img = L.DomUtil.create('img','logo')
-            img.src = 'logoceturb.svg'
+            img.src = 'imagens/logoceturb.svg'
             img.style.opacity = 0.6
             img.style.width = "110px"
             return img;
@@ -96,9 +96,13 @@
         titulo.addTo(map)
 
         // inserir imagem overlay
-        var urlimg = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
-        var imgbounds = [[-20.390057,-40.320336],[-20.392285,-40.321696]]
-        L.imageOverlay(urlimg,imgbounds, {opacity:0.6}).addTo(map)
+        var urltip = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
+        var tipbounds = [[-20.390057,-40.320336],[-20.392285,-40.321696]]
+        L.imageOverlay(urltip,tipbounds, {opacity:0.6}).addTo(map)
+
+        var urltib = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/tip.png?raw=true'
+        var tibbounds = [[-20.345964,-40.314944],[-20.346794,-40.315917]]
+        L.imageOverlay(urltib,tibbounds, {opacity:0.6}).addTo(map)
         
     </script>
     
