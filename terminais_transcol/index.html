@@ -59,7 +59,7 @@
 
         // localização terminais
         let tjc = L.marker([-20.159310,-40.195692], {icon:itjc}).on('click', zoomMarker).bindTooltip('Terminal Jacaraípe',getToolip()).addTo(map)
-        let tla = L.marker([-20.193743,-40.255401], {icon:itla}).on('click', zoomMarker).bindTooltip('Terminal Laranjeiras',getToolip()).addTo(map)
+        let tla = L.marker([-20.193600,-40.255401], {icon:itla}).on('click', zoomMarker).bindTooltip('Terminal Laranjeiras',getToolip()).addTo(map)
         let tca = L.marker([-20.230580,-40.270100], {icon:itca}).on('click', zoomMarker).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
         let tst = L.marker([-20.330000,-40.3531859], {icon:itst}).on('click', zoomMarker).bindTooltip('Terminal São Torquato',getToolip()).addTo(map)
         let tja = L.marker([-20.333730,-40.359087], {icon:itja}).on('click', zoomMarker).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
@@ -129,9 +129,13 @@
         var tcabounds = [[-20.229960,-40.269657],[-20.231265,-40.270489]]
         L.imageOverlay(urltca,tcabounds, {opacity:0.6}).addTo(map)
 
-        var urltla = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tca.png?raw=true'
-        var tlabounds = [[-20.229960,-40.269657],[-20.231265,-40.270489]]
+        var urltla = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tla.png?raw=true'
+        var tlabounds = [[-20.193056,-40.254533],[-20.194055,-40.256316]]
         L.imageOverlay(urltla,tlabounds, {opacity:0.6}).addTo(map)
+
+        var urltjc = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tla.png?raw=true'
+        var tjcbounds = [[-20.193056,-40.254533],[-20.194055,-40.256316]]
+        L.imageOverlay(urltjc,tjcbounds, {opacity:0.6}).addTo(map)
         
     </script>
     
