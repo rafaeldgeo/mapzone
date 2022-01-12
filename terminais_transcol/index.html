@@ -32,7 +32,8 @@
         }).addTo(map)
 
         var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        minZoom: zoom,
         })
 
         // camada das bases
@@ -59,7 +60,7 @@
         // localização terminais
         let tjc = L.marker([-20.159310,-40.195692], {icon:itjc}).on('click', zoomMarker).bindTooltip('Terminal Jacaraípe',getToolip()).addTo(map)
         let tla = L.marker([-20.193743,-40.255401], {icon:itla}).on('click', zoomMarker).bindTooltip('Terminal Laranjeiras',getToolip()).addTo(map)
-        let tca = L.marker([-20.230704,-40.270053], {icon:itca}).on('click', zoomMarker).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
+        let tca = L.marker([-20.230580,-40.270100], {icon:itca}).on('click', zoomMarker).bindTooltip('Terminal Carapina',getToolip()).addTo(map)
         let tst = L.marker([-20.330000,-40.3531859], {icon:itst}).on('click', zoomMarker).bindTooltip('Terminal São Torquato',getToolip()).addTo(map)
         let tja = L.marker([-20.333730,-40.359087], {icon:itja}).on('click', zoomMarker).bindTooltip('Terminal Jardim América',getToolip()).addTo(map)
         let tic = L.marker([-20.325550,-40.372151], {icon:itic}).on('click', zoomMarker).bindTooltip('Terminal Itacibá',getToolip()).addTo(map)
@@ -124,9 +125,13 @@
         var tcgbounds = [[-20.345383,-40.395397],[-20.346824,-40.397814]]
         L.imageOverlay(urltcg,tcgbounds, {opacity:0.6}).addTo(map)
 
-        var urltca = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tcg.png?raw=true'
-        var tcabounds = [[-20.345383,-40.395397],[-20.346824,-40.397814]]
+        var urltca = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tca.png?raw=true'
+        var tcabounds = [[-20.229960,-40.269657],[-20.231265,-40.270489]]
         L.imageOverlay(urltca,tcabounds, {opacity:0.6}).addTo(map)
+
+        var urltla = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tca.png?raw=true'
+        var tlabounds = [[-20.229960,-40.269657],[-20.231265,-40.270489]]
+        L.imageOverlay(urltla,tlabounds, {opacity:0.6}).addTo(map)
         
     </script>
     
