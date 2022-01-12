@@ -66,7 +66,7 @@
         let tcg = L.marker([-20.346329,-40.396696], {icon:itcg}).on('click', zoomMarker).bindTooltip('Terminal Campo Grande',getToolip()).addTo(map)
         let tib = L.marker([-20.346300,-40.315460], {icon:itib}).on('click', zoomMarker).bindTooltip('Terminal Ibes',getToolip()).addTo(map)
         let tvl = L.marker([-20.342650,-40.294687], {icon:itvl}).on('click', zoomMarker).bindTooltip('Terminal Vila Velha',getToolip()).addTo(map)
-        let tip = L.marker([-20.391223,-40.321080], {icon:itip}).on('click', zoomMarker).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
+        let tip = L.marker([-20.391223,-40.321020], {icon:itip}).on('click', zoomMarker).bindTooltip('Terminal Itaparica',getToolip()).addTo(map)
 
         // inserir zoom quando clicar no marcador
         function zoomMarker(e){
@@ -123,6 +123,10 @@
         var urltcg = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tcg.png?raw=true'
         var tcgbounds = [[-20.345383,-40.395397],[-20.346824,-40.397814]]
         L.imageOverlay(urltcg,tcgbounds, {opacity:0.6}).addTo(map)
+
+        var urltca = 'https://github.com/rafaeldgeo/mapzone/blob/main/terminais_transcol/imagens/tcg.png?raw=true'
+        var tcabounds = [[-20.345383,-40.395397],[-20.346824,-40.397814]]
+        L.imageOverlay(urltca,tcabounds, {opacity:0.6}).addTo(map)
         
     </script>
     
