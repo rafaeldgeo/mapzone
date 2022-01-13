@@ -19,7 +19,7 @@
 
     <script>
          const lat = -20.271926, lng = -40.325852
-         const zoom = 11.5
+         const zoom = 10
 
         var map = L.map("mapa", {
             zoomSnap: 0.25
@@ -43,11 +43,34 @@
 	    subdomains: 'abcd',
 	    maxZoom: 20,
         pane: 'labels'
-        }).addTo(map) 
+        })
         
-        var municipios = L.geoJSON(municipios).addTo(map)
+        var municipios = L.geoJSON(municipios, {
+            style:getStyle
+        }).bindTooltip(function(layer){
+            return `<strong>${layer.feature.properties.NOME}</strong>`
+        }).addTo(map)
 
+        function getColor(pop) {
+            return pop > 525000 ? '#67001f':
+                   pop > 500000 ? '#980043':
+                   pop > 380000 ? '#ce1256':
+                   pop > 360000 ? '#e7298a':
+                   pop > 125000 ? '#df65b0':
+                   pop > 750000 ? '#c994c7':
+                   pop > 200000 ? '#e7e1ef':
+                                  '#f7f4f9'
+        }       
 
+        function getStyle(feature) {
+            return {
+                fillColor: getColor(feature.properties.POPULACAO),
+                fillOpacity: 0.7,
+                color: '#67001f',
+                weight: 2,
+                opacity: 0.3
+            }
+        }
 
     </script>
 </body>
