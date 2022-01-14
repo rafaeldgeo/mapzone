@@ -178,7 +178,7 @@
                    n == 'Denver Broncos'           ? 'logos/broncos.png' :
                    n == 'Kansas City Chiefs'       ? 'logos/chiefs.png' :
                    n == 'Las Vegas Raiders'        ? 'logos/raiders.png' :
-                   n == 'Los Angles Charges'       ? 'logos/chargers.png' :
+                   n == 'Los Angles Charges | Los Angles Rams' ? 'logos/chargers_rams.png' :
                    n == 'Chicago Bears'            ? 'logos/bears.png' :
                    n == 'Detroit Lions'            ? 'logos/lions.png' :
                    n == 'Green Bay Packers'        ? 'logos/packers.png' :
@@ -189,7 +189,7 @@
                    n == 'Tampa Bay Buccaneers'     ? 'logos/buccaneers.png' :
                    n == 'Dallas Cowboys'           ? 'logos/cowboys.png' :
                    n == 'Philadelphia Eagles'      ? 'logos/eagles.png' :
-                   n == 'New York Giants'          ? 'logos/giants.png' :
+                   n == 'New York Giants | New York Jets'  ? 'logos/giants_jets.png' :
                    n == 'Washington Football Team' ? 'logos/washington.png' :
                    n == 'Arizona Cardinals'        ? 'logos/cardinals.png' :
                    n == 'Los Angles Rams'          ? 'logos/rams.png' :
@@ -201,8 +201,8 @@
         // criar o marcador com o icone
         function customizarIcone (feature, latlng) {
         let logo = L.icon({
-            iconUrl: getIcon(feature.properties.name),
-            iconSize: [60, 60],        
+            iconUrl: getIcon(feature.properties.times),
+            iconSize: [60],        
         })
         return L.marker(latlng, { icon: logo })
         }
@@ -212,7 +212,7 @@
 
        // geojson com os times
        let allTeam = L.geoJSON(teams, LayerIcone).bindPopup(function(layer){
-           return layer.feature.properties.name;
+           return layer.feature.properties.times;
        }).addTo(map);
 
 
