@@ -11,7 +11,7 @@
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script src="teams.js"></script>
+    <script src="times.js"></script>
 </head>
 <body>
     <div id="mapa"></div>  
@@ -201,7 +201,7 @@
         // criar o marcador com o icone
         function customizarIcone (feature, latlng) {
         let logo = L.icon({
-            iconUrl: getIcon(feature.properties.times),
+            iconUrl: getIcon(feature.properties.nome),
             iconSize: [60],        
         })
         return L.marker(latlng, { icon: logo })
@@ -211,8 +211,8 @@
        let LayerIcone = {pointToLayer: customizarIcone};
 
        // geojson com os times
-       let allTeam = L.geoJSON(teams, LayerIcone).bindPopup(function(layer){
-           return layer.feature.properties.times;
+       let allTeam = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
+           return layer.feature.properties.nome;
        }).addTo(map);
 
 
