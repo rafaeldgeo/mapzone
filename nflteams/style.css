@@ -30,13 +30,11 @@ span#conferencia {
 }
 
 span#estadio {
-    position: relative;
     background-color: black;
     color: white;
-    padding: 5px 5px 0px 5px;
+    padding: 0 5px 0px 5px;
 }
 
 img#estadios-img {
     width: 400px;
-    border-radius: 0 6px;
 }
