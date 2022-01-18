@@ -212,7 +212,7 @@
 
        // geojson com os times
        let allTeam = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
-           return layer.feature.properties.nome;
+           return layer.feature.properties.nome + `<br><img src=${layer.feature.properties.imagem} height="200" width="200">`;
        }).addTo(map);
 
 
