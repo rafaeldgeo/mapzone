@@ -15,6 +15,7 @@
 </head>
 <body>
     <div id="mapa"></div>  
+
     <!--- Leaflet -->
 
     <script>
@@ -24,14 +25,15 @@
         var map = L.map("mapa", {
             zoomControl: false,
         }).setView([lat,lng],zoom);
+                 
+        var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+	    minZoom: zoom,
+	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
         // posicionar botão de zoom
         var controle_zoom = L.control.zoom({position:'bottomleft'}).addTo(map);
-                      
-        var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-	    maxZoom: 20,
-	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    
         
         // definir icones dos marcadores
         function getIcon(n) {
@@ -90,7 +92,7 @@
         }
 
        // geojson com os times
-       let allTeam = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
+       let alltimes = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
            return `<h1 id="nome">${layer.feature.properties.nome}</h1>` 
                   + `<img id="logo-conf" src=${getConf(layer.feature.properties.conferencia)}>`
                   + `<span id="conferencia">Conferência ${layer.feature.properties.conferencia}</span><br>` 
