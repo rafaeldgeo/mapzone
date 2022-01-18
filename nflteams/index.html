@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10, user-scalable=no">
     <title>NFL Teams</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="logos/favicon.ico" type="image/x-icon">
@@ -15,151 +15,23 @@
 </head>
 <body>
     <div id="mapa"></div>  
-    <aside id="informacoes">
-        <img src="logos/nfl.png" alt="Logo NFL" id="logo-nfl">
-        <p id="titulo">TIMES DA NFL</p>
-            <div id="div-tabela">
-                <table id="table-afc">
-                    <thead>
-                        <th><img src="logos/afc.png" alt="Logo AFC" id="logo-afc-nfc"></th>
-                        <th scope="col">Conferência Americana</th>
-                        <th><img src="logos/nfc.png" alt="Logo AFC" id="logo-afc-nfc"></th>
-                        <th scope="col">Conferência Nacional</th>
-                        <th scope="col">Divisão</th>
-                    </thead>
-                    <tbody>
-                        <!--Divisão Norte-->
-
-                        <tr class="divisao-escura">
-                            <td><img src="logos/ravens.png" alt="" id="logo-times"></td>
-                            <td>Baltimore Ravens</td>
-                            <td><img src="logos/bears.png" alt="" id="logo-times"></td>
-                            <td>Chicago Bears</td>
-                            <th scope="rowgroup" rowspan="4">Norte</th>
-                        </tr>
-                        <tr class="divisao-escura">
-                            <td><img src="logos/bengals.png" alt="" id="logo-times"></td>
-                            <td>Cincinnati Bengals</td>
-                            <td><img src="logos/lions.png" alt="" id="logo-times"></td>
-                            <td>Detroit Lions</td>
-                        </tr>
-                        <tr class="divisao-escura">
-                            <td><img src="logos/browns.png" alt="" id="logo-times"></td>
-                            <td>Cleveland Browns</td>
-                            <td><img src="logos/packers.png" alt="" id="logo-times"></td>
-                            <td>Green Bay Packers</td>
-                        </tr>
-                        <tr class="divisao-escura">
-                            <td><img src="logos/steelers.png" alt="" id="logo-times"></td>
-                            <td>Pittsburgh Steelers</td>
-                            <td><img src="logos/vikings.png" alt="" id="logo-times"></td>
-                            <td>Minnesota Vikings</td>
-                        </tr>
-
-                        <!--Divisão Sul-->
-
-                        <tr class="divisao-clara">
-                            <td><img src="logos/texans.png" alt="" id="logo-times"></td>
-                            <td>Houston Texans</td>
-                            <td><img src="logos/falcons.png" alt="" id="logo-times"></td>
-                            <td>Atlanta Falcons</td>
-                            <th scope="rowgroup" rowspan="4">Sul</th>
-                        </tr>
-                        <tr class="divisao-clara">
-                            <td><img src="logos/colts.png" alt="" id="logo-times"></td>
-                            <td>Indianapolis Colts</td>
-                            <td><img src="logos/panthers.png" alt="" id="logo-times"></td>
-                            <td>Carolina Panthers</td>
-                        </tr>
-                        <tr class="divisao-clara">
-                            <td><img src="logos/jaguars.png" alt="" id="logo-times"></td>
-                            <td>Jacksonville Jaguars</td>
-                            <td><img src="logos/saints.png" alt="" id="logo-times"></td>
-                            <td>New Orleans Saints</td>
-                        </tr>
-                        <tr class="divisao-clara">
-                            <td><img src="logos/titans.png" alt="" id="logo-times"></td>
-                            <td>Tennessee Titans</td>
-                            <td><img src="logos/buccaneers.png" alt="" id="logo-times"></td>
-                            <td>Tampa Bay Buccaneers</td>
-                        </tr>
-
-                        <!--Divisão Leste-->
-
-                        <tr class="divisao-escura">
-                            <td><img src="logos/bills.png" alt="" id="logo-times"></td>
-                            <td>Buffalo Bills</td>
-                            <td><img src="logos/cowboys.png" alt="" id="logo-times"></td>
-                            <td>Dallas Cowboys</td>
-                            <th scope="rowgroup" rowspan="4">Leste</th>
-                        </tr>
-                        <tr class="divisao-escura">
-                            <td><img src="logos/dolphins.png" alt="" id="logo-times"></td>
-                            <td>Miami Dolphins</td>
-                            <td><img src="logos/giants.png" alt="" id="logo-times"></td>
-                            <td>New York Giants</td>
-                        </tr>
-                        <tr class="divisao-escura">
-                            <td><img src="logos/patriots.png" alt="" id="logo-times"></td>
-                            <td>New England Patriots</td>
-                            <td><img src="logos/eagles.png" alt="" id="logo-times"></td>
-                            <td>Philadelphia Eagles</td>
-                        </tr>
-                        <tr class="divisao-escura">
-                            <td><img src="logos/jets.png" alt="" id="logo-times"></td>
-                            <td>New York Jets</td>
-                            <td><img src="logos/washington.png" alt="" id="logo-times"></td>
-                            <td>Washington Football Team</td>
-                        </tr>
-
-                        <!--Divisão Oeste-->
-
-                        <tr class="divisao-clara">
-                            <td><img src="logos/broncos.png" alt="" id="logo-times"></td>
-                            <td>Denver Broncos</td>
-                            <td><img src="logos/cardinals.png" alt="" id="logo-times"></td>
-                            <td>Arizona Cardinals</td>
-                            <th scope="rowgroup" rowspan="4">Oeste</th>
-                        </tr>
-                        <tr class="divisao-clara">
-                            <td><img src="logos/chiefs.png" alt="" id="logo-times"></td>
-                            <td>Kansas City Chiefs</td>
-                            <td><img src="logos/rams.png" alt="" id="logo-times"></td>
-                            <td>Los Angeles Rams</td>
-                        </tr>
-                        <tr class="divisao-clara">
-                            <td><img src="logos/raiders.png" alt="" id="logo-times"></td>
-                            <td>Las Vegas Raiders</td>
-                            <td><img src="logos/49ers.png" alt="" id="logo-times"></td>
-                            <td>San Francisco 49ers</td>
-                        </tr>
-                        <tr class="divisao-clara">
-                            <td><img src="logos/chargers.png" alt="" id="logo-times"></td>
-                            <td>Los Angelas Charges</td>
-                            <td><img src="logos/seahawks.png" alt="" id="logo-times"></td>
-                            <td>Seattle Seahawks</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-    </aside>
-    
     <!--- Leaflet -->
 
     <script>
-        const lat =  37.942555, lng = -95.711909;
-        const zoom = 4.5;
-        
+        const lat =  37.942555, lng = -96.711909;
+        const zoom = 5;
+
         var map = L.map("mapa", {
             zoomControl: false,
-            zoomSnap:0.25
         }).setView([lat,lng],zoom);
-        
-        var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	    subdomains: 'abcd',
+
+        // posicionar botão de zoom
+        var controle_zoom = L.control.zoom({position:'bottomleft'}).addTo(map);
+                      
+        var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+	    maxZoom: 20,
+	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
         }).addTo(map);
-               
         
         // definir icones dos marcadores
         function getIcon(n) {
@@ -210,12 +82,21 @@
         // variável com a customização do marcador 
        let LayerIcone = {pointToLayer: customizarIcone};
 
+        // definir icone da conferencia
+        function getConf(c){
+            return c == 'Americana (AFC)'   ? 'logos/afc.png' :
+                   c == 'Nacional (NFC)'    ? 'logos/nfc.png' :
+                                              'logos/nfl.png'
+        }
+
        // geojson com os times
        let allTeam = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
-           return layer.feature.properties.nome + `<br><img src=${layer.feature.properties.imagem} height="200" width="200">`;
-       }).addTo(map);
-
-
+           return `<h1 id="nome">${layer.feature.properties.nome}</h1>` 
+                  + `<img id="logo-conf" src=${getConf(layer.feature.properties.conferencia)}>`
+                  + `<span id="conferencia">Conferência ${layer.feature.properties.conferencia}</span><br>` 
+                  + `<span id="estadio">${layer.feature.properties.estadio}</span>` 
+                  + `<br><img id="estadios-img" src=${layer.feature.properties.imagem}>`;
+       }, {maxWidth:400, keepInView:true}).addTo(map);
 
     </script>
 </body>
