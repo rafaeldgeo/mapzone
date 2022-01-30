@@ -26,7 +26,7 @@
             zoomControl: false,
         }).setView([lat,lng],zoom);
                  
-        var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+        var Stadia_AlidadeSmoothDark = L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", {
 	    minZoom: zoom,
 	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
         }).addTo(map);
@@ -78,7 +78,12 @@
             iconUrl: getIcon(feature.properties.nome),
             iconSize: [60],        
         })
-        return L.marker(latlng, { icon: logo })
+        if (feature.properties.nome == "Washington Football Team") {
+            return L.marker(latlng, { icon: logo, zIndexOffset:-1000})
+        } else {
+            return L.marker(latlng, { icon: logo})
+        }
+        
         }
        
         // variável com a customização do marcador 
