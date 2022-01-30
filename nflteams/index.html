@@ -87,7 +87,7 @@
         }
        
         // variável com a customização do marcador 
-       let LayerIcone = {pointToLayer: customizarIcone};
+       var LayerIcone = {pointToLayer: customizarIcone};
 
         // definir icone da conferencia
         function getConf(c){
@@ -97,7 +97,7 @@
         }
 
        // geojson com os times
-       let alltimes = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
+       var alltimes = L.geoJSON(times, LayerIcone).bindPopup(function(layer){
            return `<h1 id="nome">${layer.feature.properties.nome}</h1>` 
                   + `<img id="logo-conf" src=${getConf(layer.feature.properties.conferencia)}>`
                   + `<span id="conferencia">Conferência ${layer.feature.properties.conferencia}</span><br>` 
