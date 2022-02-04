@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10, user-scalable=no">
     <title>NBA Teams</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
@@ -17,8 +17,19 @@
     <!-- Leaflet -->
 
     <script>
-        var map = L.map("mapa").setView([])
+        const lat =  37.942555, lng = -96.711909;
+        const zoom = 5;
 
+        var map = L.map("mapa", {
+            zoomControl:false,
+        }).setView([lat,lng],zoom);
+
+        var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=4fbc57f2-b984-4133-90fd-5cfe28b27e45', {
+	    mainZoom: zoom,
+	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map);
+
+        // posicionar botão de zoom
+        var controle_zoom = L.control.zoom({position:'bottomleft'}).addTo(map);
     </script>
 
 
