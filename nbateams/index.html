@@ -10,7 +10,6 @@
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js"></script>
     <script src="dados/teams.js"></script>
 </head>
 <body>
@@ -49,7 +48,6 @@
                    nome == 'Houston Rockets'? 'logos/rockets.png':                                             
                    nome == 'Indiana Pacers'? 'logos/pacers.png':                                             
                    nome == 'Los Angeles Clippers | Los Angeles Lakers'? 'logos/clippers_lakers.png':         
-                   nome == 'Los Angeles Lakers'? 'logos/lakers.png':         
                    nome == 'Memphis Grizzlies'? 'logos/grizzlies.png':                                                                                 
                    nome == 'Miami Heat'? 'logos/heat.png':                                                                                 
                    nome == 'Milwaukee Bucks'? 'logos/bucks.png':                                                                                 
@@ -69,12 +67,20 @@
                                                     'logos/hawks.png'
         }
 
+        // definir tamanho do icone
+        function getSize(nome) {
+            if (nome == 'Los Angeles Clippers | Los Angeles Lakers') {
+                return [120,60]
+            } else {
+                return [60,60]
+            }
+        }
+        
         // criar marcador com o icone
         function customizarIcone(feature, latlng) {
             let logo = L.icon({
-                iconUrl: getIcon(feature.properties.nome),
-                iconSize: [60, 60],
-                
+                iconUrl: getIcon(feature.properties.nome), 
+                iconSize: getSize(feature.properties.nome)
             })
             return L.marker(latlng, {icon:logo})
         }
@@ -82,21 +88,8 @@
         // variável com a customização do marcador
         var layerIcone = {pointToLayer: customizarIcone}
 
-        var oms = new OverlappingMarkerSpiderfier(map)
-
-        var popup = new L.Popup()
-        oms.addListener('click', function(marker) {
-            popup.setContent(marker.feature.properties.name),
-            popup.setLatLng(marker.getLatLng())
-            map.openPopup(popup)
-        })
-
-        var allteams = L.geoJSON(teams, layerIcone).addTo(map)
-
-        
-
-
-        
+        var allteams = L.geoJSON(teams, layerIcone).addTo(map)        
+  
     </script>
 
 
