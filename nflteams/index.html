@@ -64,7 +64,7 @@
                    n == 'Dallas Cowboys'           ? 'logos/cowboys.png' :
                    n == 'Philadelphia Eagles'      ? 'logos/eagles.png' :
                    n == 'New York Giants | New York Jets'  ? 'logos/giants_jets.png' :
-                   n == 'Washington Football Team' ? 'logos/washington.png' :
+                   n == 'Washington Commanders' ? 'logos/commanders.png' :
                    n == 'Arizona Cardinals'        ? 'logos/cardinals.png' :
                    n == 'San Francisco 49ers'      ? 'logos/49ers.png' :
                    n == 'Seattle Seahawks'         ? 'logos/seahawks.png' :            
@@ -77,11 +77,7 @@
             iconUrl: getIcon(feature.properties.nome),
             iconSize: [60],        
         })
-        if (feature.properties.nome == "Washington Football Team") {
-            return L.marker(latlng, { icon: logo, zIndexOffset:-1000})
-        } else {
             return L.marker(latlng, { icon: logo})
-        }
         
         }
        
