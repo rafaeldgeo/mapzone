@@ -28,25 +28,30 @@
         // posicionar botão de zoom
         var controle_zoom = L.control.zoom({position:'bottomleft'}).addTo(map);
 
+        // mapa base
         var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=4fbc57f2-b984-4133-90fd-5cfe28b27e45', {
 	    mainZoom: zoom,
 	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map);
-
+        
+        // definir icone do marcador
         function getIcon(nome) {
             return nome == 'Atlanta Hawks' ? 'logos/hawks.png':
                                              'logos/hawks.png'
 
         }
 
+        // criar marcador com o icone
         function customizarIcone(feature, latlng) {
             let logo = L.icon({
                 iconUrl: getIcon(feature.properties.nome),
             })
+            return L.marker(latlng, {icon:logo})
         }
 
-        var layer
+        // variável com a customização do marcador
+        var layerIcone = {pointToLayer: customizarIcone}
 
-        var allteams = L.geoJSON(teams).addTo(map)
+        var allteams = L.geoJSON(teams, layerIcone).addTo(map)
 
         
     </script>
