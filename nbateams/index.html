@@ -36,7 +36,35 @@
         // definir icone do marcador
         function getIcon(nome) {
             return nome == 'Atlanta Hawks' ? 'logos/hawks.png':
-                                             'logos/hawks.png'
+                   nome == 'Boston Celtics'? 'logos/celtics.png':
+                   nome == 'Brooklyn Nets'? 'logos/nets.png':                                             
+                   nome == 'Charlotte Hornets'? 'logos/hornets.png':                                             
+                   nome == 'Cleveland Cavaliers'? 'logos/cavaliers.png':                                             
+                   nome == 'Chicago Bulls'? 'logos/bulls.png':                                             
+                   nome == 'Dallas Mavericks'? 'logos/mavericks.png':                                             
+                   nome == 'Denver Nuggets'? 'logos/nuggets.png':                                             
+                   nome == 'Detroit Pistons'? 'logos/pistons.png':                                             
+                   nome == 'Golden States Warriors'? 'logos/warriors.png':                                             
+                   nome == 'Houston Rockets'? 'logos/rockets.png':                                             
+                   nome == 'Indiana Pacers'? 'logos/pacers.png':                                             
+                   nome == 'Los Angeles Clippers | Los Angeles Lakers'? 'logos/clippers_lakers.png':         
+                   nome == 'Memphis Grizzlies'? 'logos/grizzlies.png':                                                                                 
+                   nome == 'Miami Heat'? 'logos/heat.png':                                                                                 
+                   nome == 'Milwaukee Bucks'? 'logos/bucks.png':                                                                                 
+                   nome == 'Minnesota Timberwolves'? 'logos/timberwolves.png':  
+                   nome == 'New Orleans Pelicans'? 'logos/pelicans.png':  
+                   nome == 'New York Knicks'? 'logos/knicks.png':  
+                   nome == 'Oklahoma City Thunder'? 'logos/thunder.png':  
+                   nome == 'Orlando Magic'? 'logos/magic.png':  
+                   nome == 'Philadelphia 76ers'? 'logos/76ers.png':  
+                   nome == 'Phoenix Suns'? 'logos/suns.png':  
+                   nome == 'Portland Trail Blazers'? 'logos/blazers.png':  
+                   nome == 'Sacramento Kings'? 'logos/kings.png':  
+                   nome == 'San Antonio Spurs'? 'logos/spurs.png':  
+                   nome == 'Toronto Raptors'? 'logos/raptors.png':  
+                   nome == 'Utah Jazz'? 'logos/jazz.png':  
+                   nome == 'Washington Wizards'? 'logos/wizards.png':
+                                                    'logos/hawks.png'
 
         }
 
@@ -44,6 +72,8 @@
         function customizarIcone(feature, latlng) {
             let logo = L.icon({
                 iconUrl: getIcon(feature.properties.nome),
+                iconSize: [60, 60],
+                
             })
             return L.marker(latlng, {icon:logo})
         }
