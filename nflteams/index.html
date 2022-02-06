@@ -77,7 +77,11 @@
             iconUrl: getIcon(feature.properties.nome),
             iconSize: [60],        
         })
+        if (feature.properties.nome == "Washington Commanders"){
+            return L.marker(latlng, { icon: logo, zIndexOffset:-1000}) // colocar a logo abaixo do Ravens
+        } else {
             return L.marker(latlng, { icon: logo})
+        }
         
         }
        
