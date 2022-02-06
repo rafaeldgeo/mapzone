@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10, user-scalable=no">
     <title>NBA Teams</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logos/favicon_nba.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
@@ -33,7 +34,7 @@
 	    mainZoom: zoom,
 	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map);
         
-        // definir icone do marcador
+        // definir o icone
         function getIcon(nome) {
             return nome == 'Atlanta Hawks' ? 'logos/hawks.png':
                    nome == 'Boston Celtics'? 'logos/celtics.png':
@@ -75,7 +76,7 @@
                 return [60,60]
             }
         }
-        
+
         // criar marcador com o icone
         function customizarIcone(feature, latlng) {
             let logo = L.icon({
