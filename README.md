@@ -2,6 +2,6 @@
  
  Mapas em geral 
  
- Repositório de projetos usando **HTML, CSS, javascript e biblioteca Leafleat JS.**
+ Repositório de projetos usando **HTML, CSS, Javascript e biblioteca Leaflet JS.**
  
  
