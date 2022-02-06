@@ -10,6 +10,8 @@ html,body, div#mapa {
     width: 100vw;
 }
 
+/* customiza popup */
+
 h1, span {
     font: 1.2em 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
