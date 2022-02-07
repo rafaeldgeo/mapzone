@@ -73,9 +73,9 @@
         // definir tamanho do icone
         function getSize(nome) {
             if (nome == 'Los Angeles Charges | Los Angeles Rams' || nome == 'New York Giants | New York Jets') {
-                return [60]
+                return [120,60]
             } else {
-                return [60]
+                return [60,60]
             }
         }
 
@@ -90,7 +90,6 @@
         } else {
             return L.marker(latlng, { icon: logo})
         }
-        
         }
        
         // variável com a customização do marcador 
