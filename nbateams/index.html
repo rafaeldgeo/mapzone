@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="dados/teams.js"></script>
+    <script src="dados/states.js"></script>
 </head>
 <body>
     <div id="mapa"></div>
@@ -89,7 +90,40 @@
         // variável com a customização do marcador
         var layerIcone = {pointToLayer: customizarIcone}
 
-        var allteams = L.geoJSON(teams, layerIcone).addTo(map)        
+        // definição da cor dos estados
+        function getColor(conference) {
+            return conference == 'Leste' ? 'blue' :
+                   conference == 'Oeste' ? 'red':
+                                          'none'
+        }
+
+        function getLogo(conference) {
+            return conference == 'Leste' ? 'logos/nba-ec.png' :
+                   conference == 'Oeste' ? 'logos/nba-wc.png':
+                                          'none'
+        }
+
+        // preencher estados de acordo com a conferencia do time
+        function getConference(feature) {
+            return {
+                fillColor: getColor(feature.properties.conference),
+                weight: 0,
+            }
+        }
+
+        var allteams = L.geoJSON(teams, layerIcone).bindPopup(function(layer){
+            return `<p id="nome">${layer.feature.properties.nome}</p><div>
+                <p class="info">Campeonatos: ${layer.feature.properties.campeonatos}</p>
+                <p class="info">Arena: ${layer.feature.properties.arena}</p>
+                </div>`
+        }).addTo(map)        
+        
+        var allstates = L.geoJSON(states, {style:getConference}).bindTooltip(function(layer){
+            return `<p class="conferencia">conferência</p><p  class="conferencia">${layer.feature.properties.conference}</p></span>` + `<img src=${getLogo(layer.feature.properties.conference)}>`
+        }).addTo(map)
+
+        
+
   
     </script>
 
