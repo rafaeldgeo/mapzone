@@ -31,10 +31,9 @@
 	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // posicionar botão de zoom
+        // posicionar botão de zoom canto inferior direito
         var controle_zoom = L.control.zoom({position:'bottomleft'}).addTo(map);
     
-        
         // definir icones dos marcadores
         function getIcon(n) {
             return n == 'Baltimore Ravens'         ? 'logos/ravens.png' :
@@ -71,11 +70,20 @@
                                                     'logos/nfl.png'
         }
 
+        // definir tamanho do icone
+        function getSize(nome) {
+            if (nome == 'Los Angeles Charges | Los Angeles Rams' || nome == 'New York Giants | New York Jets') {
+                return [60]
+            } else {
+                return [60]
+            }
+        }
+
         // criar o marcador com o icone
         function customizarIcone (feature, latlng) {
         let logo = L.icon({
             iconUrl: getIcon(feature.properties.nome),
-            iconSize: [60,60],        
+            iconSize: getSize(feature.properties.nome),        
         })
         if (feature.properties.nome == "Washington Commanders"){
             return L.marker(latlng, { icon: logo, zIndexOffset:-1000}) // colocar a logo abaixo do Ravens
