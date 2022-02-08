@@ -67,15 +67,15 @@
                    n == 'Arizona Cardinals'        ? 'logos/cardinals.png' :
                    n == 'San Francisco 49ers'      ? 'logos/49ers.png' :
                    n == 'Seattle Seahawks'         ? 'logos/seahawks.png' :            
-                                                    'logos/nfl.png'
+                                                    'logos/nfl.png';
         }
 
         // definir tamanho da logo
         function getSize(nome) {
             if (nome == 'Los Angeles Charges | Los Angeles Rams' || nome == 'New York Giants | New York Jets') {
-                return [120,60]
+                return [120,60];
             } else {
-                return [60,60]
+                return [60,60];
             }
         }
 
@@ -84,11 +84,11 @@
         let logo = L.icon({
             iconUrl: getIcon(feature.properties.nome),
             iconSize: getSize(feature.properties.nome),        
-        })
+        });
         if (feature.properties.nome == "Washington Commanders"){
-            return L.marker(latlng, { icon: logo, zIndexOffset:-1000}) // colocar a logo abaixo do Ravens
+            return L.marker(latlng, { icon: logo, zIndexOffset:-1000}); // colocar a logo abaixo do Ravens
         } else {
-            return L.marker(latlng, { icon: logo})
+            return L.marker(latlng, { icon: logo});
         }
         }
        
@@ -99,7 +99,7 @@
         function getConf(c){
             return c == 'Americana (AFC)'   ? 'logos/afc.png' :
                    c == 'Nacional (NFC)'    ? 'logos/nfc.png' :
-                                              'logos/afc_nfc.png'
+                                              'logos/afc_nfc.png';
         }
 
        // geojson com os times
