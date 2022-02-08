@@ -23,7 +23,7 @@
         const zoom = 5;
 
         var map = L.map("mapa", {
-            zoomControl: false,
+            zoomControl: false, // permitir posicionar o zoom
         }).setView([lat,lng],zoom);
                  
         var Stadia_AlidadeSmoothDark = L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=4fbc57f2-b984-4133-90fd-5cfe28b27e45", {
@@ -70,7 +70,7 @@
                                                     'logos/nfl.png'
         }
 
-        // definir tamanho do icone
+        // definir tamanho da logo
         function getSize(nome) {
             if (nome == 'Los Angeles Charges | Los Angeles Rams' || nome == 'New York Giants | New York Jets') {
                 return [120,60]
@@ -79,7 +79,7 @@
             }
         }
 
-        // criar o marcador com o icone
+        // criar o marcador com a logo
         function customizarIcone (feature, latlng) {
         let logo = L.icon({
             iconUrl: getIcon(feature.properties.nome),
@@ -95,7 +95,7 @@
         // variável com a customização do marcador 
        var layerIcone = {pointToLayer: customizarIcone};
 
-        // definir icone da conferencia
+        // definir logo da conferencia
         function getConf(c){
             return c == 'Americana (AFC)'   ? 'logos/afc.png' :
                    c == 'Nacional (NFC)'    ? 'logos/nfc.png' :
