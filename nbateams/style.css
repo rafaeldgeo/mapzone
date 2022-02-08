@@ -8,6 +8,7 @@ body {
 html, body, div#mapa {
     height: 100%;
     width: 100vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 p.conferencia {
