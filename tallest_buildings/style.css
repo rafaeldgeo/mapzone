@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+    background-color: aquamarine;    
+}
+
+div.container {
+    height: 100%;
+    width: 100vw;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+div#mapa {
+    height: 100%;
+    width: 100vw;
+}
+
+div#info {
+    width: 100vw;
+    height: 50%;
+    background-color: red;
+}
+
+img {
+    height: auto;
+    width: 100%;
+}
