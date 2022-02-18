@@ -4,25 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matriz Elétrica do Brasil</title>
+    <title>Distibuição das Unidades de Geração de Energia Elétrica no Brasil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="dados/termeletricas.js"></script>
+    <script src="dados/hidreletricas.js"></script>
+    <script src="dados/fotovoltaica.js"></script>
+    <script src="dados/eolioeletricas.js"></script>
+    <script src="dados/termonucleares.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="item1">teste</div>
-        <div class="item2">teste</div>
+        <header class="cabecalho">
+            <h3>Distibuição das Unidades Geradoras de Energia Elétrica no Brasil</h3>
+        </header>
+        <main id="mapa"></main>  
     </div>
-   
-    <!-- leaflet -->
-    <script>
-        const lat =  37.942555, lng = -96.711909;
-        const zoom = 5;
+    
 
-        var map = L.map
+    <!--- Leaflet -->
+
+    <script>
+        const lat = -15.088384, lng = -59.756067;
+        const zoom = 4.6;
+
+        var map = L.map("mapa", {
+            zoomControl: false, // permitir posicionar o zoom
+            zoomSnap: 0.25,
+        }).setView([lat,lng],zoom);
+                 
+        var Stadia_AlidadeSmoothDark = L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=4fbc57f2-b984-4133-90fd-5cfe28b27e45", {
+	    minZoom: zoom,
+	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
+
+        //var usinaTermeletrica = L.geoJSON(termeletrica).addTo(map);
+        //var usinaHidreletrica = L.geoJSON(hidreletrica).addTo(map);
+        //var usinaFotovoltaica = L.geoJSON(solar).addTo(map);
+        //var usinaEolica = L.geoJSON(eolica).addTo(map);
+        var usinaNuclear = L.geoJSON(nuclear).addTo(map); 
+
 
     </script>
     

@@ -1,18 +1,27 @@
 @charset "UTF-8";
 
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100vw;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    background-color: aqua;
+    height: 100%;
+    width: 100vw;
 }
 
-.item1 {
-    background-color: red;
-    flex: 30%;
-    
+.cabecalho {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  background-color: brown;
+  margin-bottom: 3px;
 }
 
-.item2 {
-    background-color: blue;
-    flex: 30%;
+#mapa {
+    height: 100%;
+    width: 100vw;
 }
