@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distibuição das Unidades de Geração de Energia Elétrica no Brasil</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="plugins/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
@@ -15,6 +16,7 @@
     <script src="dados/fotovoltaica.js"></script>
     <script src="dados/eolioeletricas.js"></script>
     <script src="dados/termonucleares.js"></script>
+    <script src="plugins/leaflet.markercluster.js"></script>
 </head>
 <body>
     <div class="container">
@@ -24,7 +26,6 @@
         <main id="mapa"></main>  
     </div>
     
-
     <!--- Leaflet -->
 
     <script>
@@ -46,10 +47,15 @@
         //var usinaTermeletrica = L.geoJSON(termeletrica).addTo(map);
         //var usinaHidreletrica = L.geoJSON(hidreletrica).addTo(map);
         //var usinaFotovoltaica = L.geoJSON(solar).addTo(map);
-        //var usinaEolica = L.geoJSON(eolica).addTo(map);
-        var usinaNuclear = L.geoJSON(nuclear).addTo(map); 
-
-
+        var usinaEolica = L.geoJSON(eolica);
+        var usinaNuclear = L.geoJSON(nuclear);
+        
+        var markers = L.markerClusterGroup();
+        var makers2 = L.markerClusterGroup()
+        markers.addLayer(usinaNuclear);
+        makers2.addLayer(usinaEolica);
+        map.addLayer(markers);
+        map.addLayer(makers2);
     </script>
     
 </body>
