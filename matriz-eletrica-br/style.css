@@ -1,2 +1,18 @@
 @charset "UTF-8";
 
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+}
+
+.item1 {
+    background-color: red;
+    flex: 30%;
+    
+}
+
+.item2 {
+    background-color: blue;
+    flex: 30%;
+}
