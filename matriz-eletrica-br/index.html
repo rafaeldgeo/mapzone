@@ -38,53 +38,55 @@
         }).setView([lat,lng],zoom);
                  
         var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
-}).addTo(map);
+	    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+        }).addTo(map);
 
         var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
 
         //var usinaTermeletrica = L.geoJSON(termeletrica).addTo(map);
         //var usinaHidreletrica = L.geoJSON(hidreletrica).addTo(map);
-        //var usinaFotovoltaica = L.geoJSON(solar).addTo(map);
-        var usinaEolica = L.geoJSON(eolica, {pointToLayer:customizarIcone});
+        //var usinaFotovoltaica = L.geoJSON(fotovoltaica).addTo(map);
+
+        var usinaEolio = L.geoJSON(eolioeletrica, {pointToLayer:customizarIcone});
         //var usinaNuclear = L.geoJSON(nuclear);
         
-
-
-
+        function getIcon(matriz){
+            return matriz == "Eólio"        ? 'icone/ceolio.svg' :
+                   matriz == "Fotovoltaica" ? 'icone/csolar.svg' :
+                   matriz == "Hidrelétrica" ? 'icone/chidreletrica.svg' :
+                   matriz == "Termelétrica" ? 'icone/ctermeletrica.svg' :
+                                       'icone/cnuclear.svg'
+        }
 
         // customizar icone do marcador
         function customizarIcone(feature, latlng) {
             var myIcon = L.icon({
-            iconUrl: 'icone/isolar.svg',
+            iconUrl: getIcon(feature.properties.MATRIZ),
             iconSize: [32,32],
         });
             return L.marker(latlng, {icon:myIcon});
         }
 
-        // customizar clusters
-        var cEolica = L.markerClusterGroup(
-            {
+         // customizar clusters
+        function customizarCluster(){
+            return {
             removeOutsideVisibleBounds: false,
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
             spiderfyOnMaxZoom: true,
-            maxClusterRadius: 80,
+            maxClusterRadius: 210,
             iconCreateFunction: function(cluster) {
-                return L.divIcon({html: `<div id="eolica">
-                <img src="icone/ceolica.svg" alt=""> 
-                <p id="teste">${cluster.getChildCount()}</p></div>`, className:'eolica'});
+                return L.divIcon({html: `<div id="eolio">
+                    <img src="icone/ceolio.svg" alt=""> 
+                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
             }
-            });
-        
-        // inserir clusters
-        cEolica.addLayer(usinaEolica);
-        map.addLayer(cEolica);
-
-        
-
-
-
+            }
+        }
+       
+         // inserir clusters
+        var cEolio = L.markerClusterGroup(customizarCluster());
+        cEolio.addLayer(usinaEolio);
+        map.addLayer(cEolio);
 
     </script>
     
