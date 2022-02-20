@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distibuição das Unidades de Geração de Energia Elétrica no Brasil</title>
+    <title>Localização das Unidades de Geração de Energia Elétrica no Brasil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="plugins/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <header class="cabecalho">
-            <h3>Distibuição das Unidades Geradoras de Energia Elétrica no Brasil</h3>
+            <h3>Localização das Unidades Geradoras de Energia Elétrica no Brasil</h3>
         </header>
         <main id="mapa"></main>  
     </div>
@@ -37,26 +37,59 @@
             zoomSnap: 0.25,
         }).setView([lat,lng],zoom);
                  
-        var Stadia_AlidadeSmoothDark = L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=4fbc57f2-b984-4133-90fd-5cfe28b27e45", {
-	    minZoom: zoom,
-	    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+}).addTo(map);
 
         var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
 
         //var usinaTermeletrica = L.geoJSON(termeletrica).addTo(map);
         //var usinaHidreletrica = L.geoJSON(hidreletrica).addTo(map);
         //var usinaFotovoltaica = L.geoJSON(solar).addTo(map);
-        var usinaEolica = L.geoJSON(eolica);
-        var usinaNuclear = L.geoJSON(nuclear);
+        var usinaEolica = L.geoJSON(eolica, {pointToLayer:customizarIcone});
+        //var usinaNuclear = L.geoJSON(nuclear);
         
-        var markers = L.markerClusterGroup();
-        var makers2 = L.markerClusterGroup()
-        markers.addLayer(usinaNuclear);
-        makers2.addLayer(usinaEolica);
-        map.addLayer(markers);
-        map.addLayer(makers2);
+
+
+
+
+        // customizar icone do marcador
+        function customizarIcone(feature, latlng) {
+            var myIcon = L.icon({
+            iconUrl: 'icone/isolar.svg',
+            iconSize: [32,32],
+        });
+            return L.marker(latlng, {icon:myIcon});
+        }
+
+        // customizar clusters
+        var cEolica = L.markerClusterGroup(
+            {
+            removeOutsideVisibleBounds: false,
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: true,
+            maxClusterRadius: 80,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({html: `<div id="eolica">
+                <img src="icone/ceolica.svg" alt=""> 
+                <p id="teste">${cluster.getChildCount()}</p></div>`, className:'eolica'});
+            }
+            });
+        
+        // inserir clusters
+        cEolica.addLayer(usinaEolica);
+        map.addLayer(cEolica);
+
+        
+
+
+
+
     </script>
     
+    
+    
+
 </body>
 </html>
