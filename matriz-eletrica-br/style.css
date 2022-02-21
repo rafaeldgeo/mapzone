@@ -46,17 +46,17 @@ html, body {
 }
 
 .nuclear {
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.76);
 }
 
 .fotovoltaica {
-    background-color: rgba(255, 255, 0, 0.801);
+    background-color: rgba(255, 255, 0, 0.76);
 }
 
 .termeletrica {
-    background-color: rgba(255, 0, 0, 0.63);
+    background-color: rgba(255, 0, 0, 0.76);
 }
 
 .hidreletrica {
-    background-color: rgba(27, 141, 247, 0.699);
+    background-color: rgba(27, 141, 247, 0.76);
 }

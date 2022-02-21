@@ -40,7 +40,15 @@
                  
         var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+        });
+
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
         }).addTo(map);
+
+        var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']});
 
         var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
 
@@ -51,11 +59,11 @@
         var usinaHidreletrica = L.geoJSON(hidreletrica, {pointToLayer:customizarIcone});
         
         function getIcon(matriz){
-            return matriz == "Eólio"        ? "icone/ceolio.svg" :
-                   matriz == "Fotovoltaica" ? "icone/csolar.svg" :
-                   matriz == "Hidrelétrica" ? "icone/chidreletrica.svg" :
-                   matriz == "Termelétrica" ? "icone/ctermeletrica.svg" :
-                                              "icone/cnuclear.svg"
+            return matriz == "Eólio"        ? "icone/ieolio.svg" :
+                   matriz == "Fotovoltaica" ? "icone/isolar.svg" :
+                   matriz == "Hidrelétrica" ? "icone/ihidreletrica.svg" :
+                   matriz == "Termelétrica" ? "icone/itermeletrica.svg" :
+                                              "icone/inuclear.svg"
         }
 
         // customizar icone do marcador
@@ -137,6 +145,23 @@
         });
         cHidreletrica.addLayer(usinaHidreletrica);
         map.addLayer(cHidreletrica);
+
+        // controle legenda
+        var baseLayers = {
+            'Vetorial': Esri_WorldTopoMap,
+            'Satélite': Esri_WorldImagery,
+            'google': googleSat,
+        }
+
+        var overLays = {
+            'Usinas Hidrelétricas': cHidreletrica,
+            'Usinas Termelétricas': cTermeletrica,
+            'Usinas Fotovoltaicas': cFotovoltaica,
+            'Usinas Eolioeletricas': cEolio,
+            'Usinas Termonucleares': cNuclear,
+        }
+
+        L.control.layers(baseLayers,overLays).addTo(map);
 
     </script>
 </body>
