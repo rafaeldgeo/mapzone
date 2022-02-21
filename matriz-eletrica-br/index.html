@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localização das Unidades de Geração de Energia Elétrica no Brasil</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="icone/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="plugins/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -29,7 +30,7 @@
     <!--- Leaflet -->
 
     <script>
-        const lat = -15.088384, lng = -59.756067;
+        const lat = -17.088384, lng = -57.756067;
         const zoom = 4.6;
 
         var map = L.map("mapa", {
@@ -43,19 +44,18 @@
 
         var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
 
-        //var usinaTermeletrica = L.geoJSON(termeletrica).addTo(map);
-        //var usinaHidreletrica = L.geoJSON(hidreletrica).addTo(map);
-        //var usinaFotovoltaica = L.geoJSON(fotovoltaica).addTo(map);
-
         var usinaEolio = L.geoJSON(eolioeletrica, {pointToLayer:customizarIcone});
-        //var usinaNuclear = L.geoJSON(nuclear);
+        var usinaFotovoltaica = L.geoJSON(fotovoltaica, {pointToLayer:customizarIcone});
+        var usinaNuclear = L.geoJSON(termonuclear, {pointToLayer:customizarIcone});
+        var usinaTermeletrica = L.geoJSON(termeletrica, {pointToLayer:customizarIcone});
+        var usinaHidreletrica = L.geoJSON(hidreletrica, {pointToLayer:customizarIcone});
         
         function getIcon(matriz){
-            return matriz == "Eólio"        ? 'icone/ceolio.svg' :
-                   matriz == "Fotovoltaica" ? 'icone/csolar.svg' :
-                   matriz == "Hidrelétrica" ? 'icone/chidreletrica.svg' :
-                   matriz == "Termelétrica" ? 'icone/ctermeletrica.svg' :
-                                       'icone/cnuclear.svg'
+            return matriz == "Eólio"        ? "icone/ceolio.svg" :
+                   matriz == "Fotovoltaica" ? "icone/csolar.svg" :
+                   matriz == "Hidrelétrica" ? "icone/chidreletrica.svg" :
+                   matriz == "Termelétrica" ? "icone/ctermeletrica.svg" :
+                                              "icone/cnuclear.svg"
         }
 
         // customizar icone do marcador
@@ -67,31 +67,77 @@
             return L.marker(latlng, {icon:myIcon});
         }
 
-         // customizar clusters
-        function customizarCluster(){
-            return {
-            removeOutsideVisibleBounds: false,
+         // inserir clusters
+        var cEolio = L.markerClusterGroup({
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
             spiderfyOnMaxZoom: true,
-            maxClusterRadius: 210,
+            maxClusterRadius: 200,
             iconCreateFunction: function(cluster) {
-                return L.divIcon({html: `<div id="eolio">
-                    <img src="icone/ceolio.svg" alt=""> 
+                return L.divIcon({html: `<div class="box eolio">
+                    <img src="icone/ceolio.svg" alt="Usina Eolioelétrica"> 
                 <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
             }
-            }
-        }
-       
-         // inserir clusters
-        var cEolio = L.markerClusterGroup(customizarCluster());
+        });
         cEolio.addLayer(usinaEolio);
         map.addLayer(cEolio);
 
-    </script>
-    
-    
-    
+        var cNuclear = L.markerClusterGroup({
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: true,
+            maxClusterRadius: 10,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({html: `<div class="box nuclear">
+                    <img src="icone/cnuclear.svg" alt="Usina Termonuclear"> 
+                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+            }
+        });
+        cNuclear.addLayer(usinaNuclear);
+        map.addLayer(cNuclear);
 
+        var cFotovoltaica = L.markerClusterGroup({
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: true,
+            maxClusterRadius: 200,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({html: `<div class="box fotovoltaica">
+                    <img src="icone/csolar.svg" alt="Usina Fotovoltaica"> 
+                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+            }
+        });
+        cFotovoltaica.addLayer(usinaFotovoltaica);
+        map.addLayer(cFotovoltaica);
+
+        var cTermeletrica = L.markerClusterGroup({
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: true,
+            maxClusterRadius: 200,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({html: `<div class="box termeletrica">
+                    <img src="icone/ctermeletrica.svg" alt="Usina Termelétrica"> 
+                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+            }
+        });
+        cTermeletrica.addLayer(usinaTermeletrica);
+        map.addLayer(cTermeletrica);
+
+        var cHidreletrica = L.markerClusterGroup({
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: true,
+            maxClusterRadius: 200,
+            iconCreateFunction: function(cluster) {
+                return L.divIcon({html: `<div class="box hidreletrica">
+                    <img src="icone/chidreletrica.svg" alt="Usina Hidrelétrica"> 
+                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+            }
+        });
+        cHidreletrica.addLayer(usinaHidreletrica);
+        map.addLayer(cHidreletrica);
+
+    </script>
 </body>
 </html>

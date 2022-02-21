@@ -5,6 +5,7 @@ html, body {
     margin: 0;
     height: 100%;
     width: 100vw;
+    background-color: gray;
 }
 
 .container {
@@ -17,7 +18,7 @@ html, body {
 .cabecalho {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  background-color: brown;
+  background-color: white;
   margin-bottom: 3px;
 }
 
@@ -29,14 +30,33 @@ html, body {
 .info {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
-    line-height: 0;
     text-align: center;
-}   
+}
 
-#eolio {
+.box {
     width: 30px;
-    background-color: rgba(0, 128, 0, 0.76);
     padding: 1px;
     border-radius: 5px;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.486);
+    line-height: 0;
+}
+
+.eolio {
+    background-color: rgba(0, 128, 0, 0.76);  
+}
+
+.nuclear {
+    background-color: orange;
+}
+
+.fotovoltaica {
+    background-color: rgba(255, 255, 0, 0.801);
+}
+
+.termeletrica {
+    background-color: rgba(255, 0, 0, 0.63);
+}
+
+.hidreletrica {
+    background-color: rgba(27, 141, 247, 0.699);
 }
