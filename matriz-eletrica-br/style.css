@@ -18,7 +18,7 @@ html, body {
 .cabecalho {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.815);
+  background-color: rgb(211, 210, 210);
   margin-bottom: 3px;
 }
 
