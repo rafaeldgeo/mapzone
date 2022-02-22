@@ -30,7 +30,7 @@
     <!--- Leaflet -->
 
     <script>
-        const lat = -17.088384, lng = -57.756067;
+        const lat = -17.088384, lng = -56.756067;
         const zoom = 4.6;
 
         var map = L.map("mapa", {
@@ -46,13 +46,9 @@
 	    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
         });
 
-        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-        }).addTo(map);
-
         var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
         maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']});
+        subdomains:['mt0','mt1','mt2','mt3']}).addTo(map);
 
         // definir icone
         function getIcon(matriz){
@@ -247,9 +243,8 @@
 
         // controle legenda
         var baseLayers = {
+            'Satélite': googleSat,
             'Vetorial': Esri_WorldTopoMap,
-            'Satélite': Esri_WorldImagery,
-            'google': googleSat,
         }
 
         var overLays = {
