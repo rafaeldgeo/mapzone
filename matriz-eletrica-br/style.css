@@ -60,3 +60,23 @@ html, body {
 .hidreletrica {
     background-color: rgba(27, 141, 247, 0.76);
 }
+
+.imagem {
+    height: 25px;
+    position: relative;
+    top: 10px;
+    padding: 2px;    
+}
+
+.dados {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.titulo {
+    font-weight: bolder;
+    border-bottom: 1px solid;
+}
+
+.tooltip {
+    font-size: 0.8em;
+}

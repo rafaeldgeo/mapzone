@@ -37,7 +37,11 @@
             zoomControl: false, // permitir posicionar o zoom
             zoomSnap: 0.25,
         }).setView([lat,lng],zoom);
-                 
+
+        // posiciona botão de zoom
+        var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
+                
+        // bases cartográficas
         var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
         });
@@ -50,14 +54,7 @@
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']});
 
-        var controlZoom = L.control.zoom({position:'bottomleft'}).addTo(map);
-
-        var usinaEolio = L.geoJSON(eolioeletrica, {pointToLayer:customizarIcone});
-        var usinaFotovoltaica = L.geoJSON(fotovoltaica, {pointToLayer:customizarIcone});
-        var usinaNuclear = L.geoJSON(termonuclear, {pointToLayer:customizarIcone});
-        var usinaTermeletrica = L.geoJSON(termeletrica, {pointToLayer:customizarIcone});
-        var usinaHidreletrica = L.geoJSON(hidreletrica, {pointToLayer:customizarIcone});
-        
+        // definir icone
         function getIcon(matriz){
             return matriz == "Eólio"        ? "icone/ieolio.svg" :
                    matriz == "Fotovoltaica" ? "icone/isolar.svg" :
@@ -74,13 +71,27 @@
         });
             return L.marker(latlng, {icon:myIcon});
         }
+ 
+        // inserir GeoJson Usina Eolioeletrica
+        var usinaEolio = L.geoJSON(eolioeletrica, {pointToLayer:customizarIcone, onEachFeature: function(feature,layer){
+            let popupContent = `<div class="dados">
+                                <span class="titulo"> INFORMAÇÕES </span><br>
+                                NOME: ${layer.feature.properties.NOME}<br>
+                                PROPRIETÁRIO: ${layer.feature.properties.PROPRIETAR}<br> 
+                                UF: ${layer.feature.properties.UF}<br>
+                                MUNICÍPIO: ${layer.feature.properties.MUNIC}<br>
+                                FONTE:ANEEL
+                                </div>`;
 
-         // inserir clusters
+            layer.bindPopup(popupContent);
+        }});
+        
+        // inserir clusters Usina Eolioeletrica
         var cEolio = L.markerClusterGroup({
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
             spiderfyOnMaxZoom: true,
-            maxClusterRadius: 200,
+            maxClusterRadius: 210,
             iconCreateFunction: function(cluster) {
                 return L.divIcon({html: `<div class="box eolio">
                     <img src="icone/ceolio.svg" alt="Usina Eolioelétrica"> 
@@ -90,6 +101,27 @@
         cEolio.addLayer(usinaEolio);
         map.addLayer(cEolio);
 
+        //inserir tooltip no cluster
+        cEolio.on('clustermouseover', function(cluster){
+            cluster.layer.bindTooltip('<span class="tooltip">clique para zoom</span>').openTooltip();
+        });
+
+        // inserir GeoJson Usina Termonuclear
+        var usinaNuclear = L.geoJSON(termonuclear, {pointToLayer:customizarIcone, onEachFeature: function(feature,layer){
+            let popupContent = `<div class="dados">
+                                <span class="titulo"> INFORMAÇÕES </span><br>
+                                NOME: ${layer.feature.properties.NOME}<br>
+                                PROPRIETÁRIO: ${layer.feature.properties.PROPRIETAR}<br> 
+                                COMBUSTÍVEL: ${layer.feature.properties.COMBUSTIVE}<br> 
+                                UF: ${layer.feature.properties.UF}<br>
+                                MUNICÍPIO: ${layer.feature.properties.MUNIC}<br>
+                                FONTE:ANEEL
+                                </div>`;
+
+            layer.bindPopup(popupContent);
+        }});
+
+        // inserir clusters Usina Termonuclear
         var cNuclear = L.markerClusterGroup({
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
@@ -98,40 +130,102 @@
             iconCreateFunction: function(cluster) {
                 return L.divIcon({html: `<div class="box nuclear">
                     <img src="icone/cnuclear.svg" alt="Usina Termonuclear"> 
-                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+                    <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
             }
         });
         cNuclear.addLayer(usinaNuclear);
         map.addLayer(cNuclear);
 
+         //inserir tooltip no cluster
+         cNuclear.on('clustermouseover', function(cluster){
+            cluster.layer.bindTooltip('<span class="tooltip">clique para zoom</span>').openTooltip();
+        });
+
+        // inserir GeoJson Usina Fotovoltaica
+        var usinaFotovoltaica = L.geoJSON(fotovoltaica, {pointToLayer:customizarIcone, onEachFeature:function(feature,layer){
+            let popupContent = `<div class="dados">
+                                <span class="titulo"> INFORMAÇÕES </span><br>
+                                NOME: ${layer.feature.properties.NOME}<br>
+                                PROPRIETÁRIO: ${layer.feature.properties.PROPRIETAR}<br> 
+                                UF: ${layer.feature.properties.UF}<br>
+                                MUNICÍPIO: ${layer.feature.properties.MUNIC}<br>
+                                FONTE:ANEEL
+                                </div>`;
+
+            layer.bindPopup(popupContent);
+        }});
+        
+        // inserir clusters Usina Fotovoltaica
         var cFotovoltaica = L.markerClusterGroup({
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
             spiderfyOnMaxZoom: true,
-            maxClusterRadius: 200,
+            maxClusterRadius: 280,
             iconCreateFunction: function(cluster) {
                 return L.divIcon({html: `<div class="box fotovoltaica">
                     <img src="icone/csolar.svg" alt="Usina Fotovoltaica"> 
-                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+                    <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
             }
         });
         cFotovoltaica.addLayer(usinaFotovoltaica);
         map.addLayer(cFotovoltaica);
 
+        //inserir tooltip no cluster
+        cFotovoltaica.on('clustermouseover', function(cluster){
+            cluster.layer.bindTooltip('<span class="tooltip">clique para zoom</span>').openTooltip();
+        });
+
+        // inserir GeoJson Usina Termeletrica
+        var usinaTermeletrica = L.geoJSON(termeletrica, {pointToLayer:customizarIcone, onEachFeature:function(feature,layer){
+            let popupContent = `<div class="dados">
+                                <span class="titulo"> INFORMAÇÕES </span><br>
+                                NOME: ${layer.feature.properties.NOME}<br>
+                                PROPRIETÁRIO: ${layer.feature.properties.PROPRIETAR}<br> 
+                                COMBUSTÍVEL: ${layer.feature.properties.COMBUSTIVE}<br> 
+                                UF: ${layer.feature.properties.UF}<br>
+                                MUNICÍPIO: ${layer.feature.properties.MUNIC}<br>
+                                FONTE:ANEEL
+                                </div>`;
+
+            layer.bindPopup(popupContent);
+        }});
+
+        // inserir clusters Usina Termeletrica
         var cTermeletrica = L.markerClusterGroup({
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
             spiderfyOnMaxZoom: true,
-            maxClusterRadius: 200,
+            maxClusterRadius: 205,
             iconCreateFunction: function(cluster) {
                 return L.divIcon({html: `<div class="box termeletrica">
                     <img src="icone/ctermeletrica.svg" alt="Usina Termelétrica"> 
-                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+                    <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
             }
         });
         cTermeletrica.addLayer(usinaTermeletrica);
         map.addLayer(cTermeletrica);
 
+        //inserir tooltip no cluster
+        cTermeletrica.on('clustermouseover', function(cluster){
+            cluster.layer.bindTooltip('<span class="tooltip">clique para zoom</span>').openTooltip();
+        });
+
+        // inserir GeoJson Usina Hidreletrica
+        var usinaHidreletrica = L.geoJSON(hidreletrica, {pointToLayer:customizarIcone, onEachFeature:function(feature, layer){
+            let popupContent = `<div class="dados">
+                                <span class="titulo"> INFORMAÇÕES </span><br>
+                                NOME: ${layer.feature.properties.NOME}<br>
+                                PROPRIETÁRIO: ${layer.feature.properties.PROPRIETAR}<br> 
+                                RIO: ${layer.feature.properties.RIO}<br> 
+                                UF: ${layer.feature.properties.UF}<br>
+                                MUNICÍPIO: ${layer.feature.properties.MUNIC}<br>
+                                FONTE:ANEEL
+                                </div>`;
+
+            layer.bindPopup(popupContent);
+        }});
+
+        // inserir clusters Usina Hidreletrica
         var cHidreletrica = L.markerClusterGroup({
             showCoverageOnHover: false,
             zoomToBoundsOnClick: true,
@@ -140,11 +234,16 @@
             iconCreateFunction: function(cluster) {
                 return L.divIcon({html: `<div class="box hidreletrica">
                     <img src="icone/chidreletrica.svg" alt="Usina Hidrelétrica"> 
-                <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
+                    <p class="info">${cluster.getChildCount()}</p></div>`, className:'informacao'});
             }
         });
         cHidreletrica.addLayer(usinaHidreletrica);
         map.addLayer(cHidreletrica);
+
+        //inserir tooltip no cluster
+        cHidreletrica.on('clustermouseover', function(cluster){
+            cluster.layer.bindTooltip('<span class="tooltip">clique para zoom</span>').openTooltip();
+        });
 
         // controle legenda
         var baseLayers = {
@@ -154,15 +253,17 @@
         }
 
         var overLays = {
-            'Usinas Hidrelétricas': cHidreletrica,
-            'Usinas Termelétricas': cTermeletrica,
-            'Usinas Fotovoltaicas': cFotovoltaica,
-            'Usinas Eolioeletricas': cEolio,
-            'Usinas Termonucleares': cNuclear,
+            '<img class="imagem" src="icone/ihidreletrica.svg" alt="Usina Hidrelétrica"> Usinas Hidrelétricas': cHidreletrica,
+            '<img class="imagem" src="icone/itermeletrica.svg" alt="Usinas Termelétricas"> Usinas Termelétricas': cTermeletrica,
+            '<img class="imagem" src="icone/isolar.svg" alt="Usinas Fotovoltaicas"> Usinas Fotovoltaicas': cFotovoltaica,
+            '<img class="imagem" src="icone/ieolio.svg" alt="Usinas Fotovoltaicas"> Usinas Eolioelétricas': cEolio,
+            '<img class="imagem" src="icone/inuclear.svg" alt="Usinas Fotovoltaicas"> Usinas Termonucleares': cNuclear,
         }
 
-        L.control.layers(baseLayers,overLays).addTo(map);
+        L.control.layers(baseLayers,overLays, {collapsed:false}).addTo(map);
 
     </script>
+
+    
 </body>
 </html>
