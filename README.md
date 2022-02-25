@@ -13,5 +13,5 @@
  * [Mapa da Localização das Unidades de Geração de Energia do Brasil](https://rafaeldgeo.github.io/mapzone/matriz-eletrica-br/index.html) ⚡
 
 ## População
- * [Mapa de Densidade Demográfica do Brasil - 2010 (https://rafaeldgeo.github.io/mapzone/densidade-demografica/index.html) 🧑‍🤝‍🧑
+ * [Mapa de Densidade Demográfica do Brasil - 2010](https://rafaeldgeo.github.io/mapzone/densidade-demografica/index.html) 🧑‍🤝‍🧑
  
