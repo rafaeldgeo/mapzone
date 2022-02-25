@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Densidade Demográfica - 2010</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+</head>
+<body>
+    <div id="mapa"></div>
+
+    <!-- leaflet -->
+    <script type="text/javascript">
+        const lat = -15.088384, lng = -55.756067;
+        const zoom = 4.7;
+
+        var map = L.map("mapa", {
+            zoomSnap: 0.25,
+        }).setView([lat,lng],zoom)
+
+        // bases cartográficas
+        var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri and the GIS User Community'
+        }).addTo(map);
+        
+        // usando tile WMS do IBGE
+        var densidade = L.tileLayer.wms("https://geoservicos.ibge.gov.br/geoserver/wms", {
+        layers: 'CGEO:AtlasMar_DensidadeDemografica',
+        format: 'image/png',
+        transparent: true,
+        opacity: 0.6,
+        attribution: "IBGE - Densidade demográfica - Habitantes por km² (2010)"
+        }).addTo(map);
+
+    </script>
+    
+</body>
+</html>
